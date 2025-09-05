@@ -10,7 +10,7 @@ A small **React + TypeScript (Vite)** app that fetches **accounts** and **transa
 - Creating a loading state 🎉
 - Creating an error state 🎉
 - User oriented formatting 🎉
-- Fix the test ❌ (I fixed the failing first transaction test and some tests in the second test, but I still couldn't get it to work 😔)
+- Fix the test ❌ (I fixed the failing first transaction test and some tests in the second failing test, but I still couldn't get it to work 😔)
 - Match the designs 🎉
 
 ---
@@ -76,3 +76,5 @@ npm run test
 
 - Persist “last updated” timestamps per resource.
 - Virtualize long tables.
+- Pagination
+- Skeleton Loaders
