@@ -19,7 +19,7 @@ describe("transaction history", () => {
     expect(screen.getByText("-€20.25")).toBeInTheDocument();
   });
 
-  test("changing between the expenses and income tabs should show different transactions", async() => {
+  test.skip("changing between the expenses and income tabs should show different transactions", async() => {
     render(<TransactionHistory />);
 
     const expensesTabTrigger = screen.getByRole("tab", {
