@@ -1,63 +1,78 @@
-# bankly
+# Bankly — Frontend Take-Home
 
-Heya there! 👋
-
-Welcome to [Bud](https://www.thisisbud.com)'s takehome frontend developer showcase!
-
-> We just wanted to say thank you for interviewing with us! The job hunting process can be a really stressful and anxious time, but we promise you, we don't bite!
->
-> If there's anything you need or any accommodations we can make so you feel at ease _please_ let us know and we'll do out best to sort it!  
-> ~ _Frontend at Bud_
-
-This is way less of a test with right and wrong answers and more of us looking at:
-
-- "How do you write code?"
-- "How do you test?"
-- "How do you think about accessibility?"
-
-If you're struggling to work out what the "right answer" looks like - please don't! This codebase is really just going to be a conversation starter for our next discussion, so don't worry about perfect.
-
-**What we are looking for is a React app based on the [tasks](./tasks) we've set out.**
-
-There's a quite a few tasks in there - so please, feel no obligation to do all of them - keep going until you get bored or stuck and just let us know where you get upto.
-
-You can put as much or as little into this as you'd like - so feel free to go a bit wild if you want.
-
-**When you're finished with the exercise, please email your Bud contact with a link to your Github repository, or just attach it as a .zip file.**
-
-Thanks!  
-~ _Frontend at Bud_
+A small **React + TypeScript (Vite)** app that fetches **accounts** and **transactions** from mocked API routes (MSW), shows them with a clean UI (Radix Tabs), and demonstrates patterns for **data fetching (SWR)**, **loading/error states**, **locale formatting**, and **tests (Vitest + Testing Library + MSW)**.
 
 ---
 
-### Getting setup
+## Taks Completed (5 out of 6) 
 
-#### Prerequisites
+- Connecting to the API 🎉
+- Creating a loading state 🎉
+- Creating an error state 🎉
+- User oriented formatting 🎉
+- Fix the test ❌ (I fixed the failing first transaction test and some tests in the second test, but I still couldn't get it to work 😔)
+- Match the designs 🎉
 
-- A code editor
-- A modern-_ish_ version of npm & node.
-- Docker (but only if you choose to run the app in a [devcontainer](https://code.visualstudio.com/docs/remote/containers))
+---
 
-#### Installation
+## Screenshots
+### Bankly app
+<img width="1506" height="822" alt="image" src="https://github.com/user-attachments/assets/62cca4ff-f38f-4612-b31b-d4ac00b578a8" />
 
-The application has a [dev-container](./.devcontainer/devcontainer.json) that enables you to get setup quickly if you're familiar with them. Your code editor might automatically find it and ask you to run it when you load the codebase.
 
-Otherwise, you can get setup 'manually' pretty quickly too!
 
-1. In a terminal type `npm install`
-2. Wait a couple of minutes for everything to download
-3. If that's all worked, that's all you need to do!
-4. Type `npm run dev` and you should see a message a little like this in the terminal:
+### Loading states for Accounts and Transactions
+- The shell (page title + tabs) always renders.
+- Initial load shows Loading… only in the panel area (no layout jump).
+<img width="1512" height="982" alt="image" src="https://github.com/user-attachments/assets/9204b6d7-05bc-4f2e-a0ec-cc63b5b1bab9" />
+
+
+### Error States for Accounts and Transactions
+- Error UI at the feature level with a clear message and a Retry button (calls mutate()).
+<img width="1512" height="982" alt="image" src="https://github.com/user-attachments/assets/03266687-0981-45d5-94c1-5145b8ec3fb9" />
+
+### Empty states for Accounts and Transactions
+<img width="1512" height="982" alt="image" src="https://github.com/user-attachments/assets/5e8b70c1-e749-4c38-8400-8a4f5d29ccb2" />
+
+---
+
+## Getting Started
+
+> Requires **Node ≥ 24** and **npm ≥ 10** (per `package.json` `engines` field).
 
 ```bash
-  VITE v7.1.2  ready in 921 ms
+# install
+npm install
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
+# run dev server
+npm run dev    # http://localhost:5173
+
+# tests
+npm run test
+
 ```
+---
+## Tech Stack
 
-#### Run commands
+- **React 19**, **Vite**, **TypeScript**
+- **SWR** — cache / dedupe / revalidate
+- **MSW** — mock API in dev & tests
+- **Vitest** + **@testing-library/react**
+- **Radix UI Tabs**
 
-- `npm run dev` - Starts the vite server at `localhost:5173` (by default).
-- `npm run test` - Runs tests, once.
-- `npm run test:coverage` - Runs tests and shows the line coverage.
+---
+
+### Accessibility
+
+- Error banner uses role="alert".
+- Retry is a button styled as text (keeps keyboard & SR support).
+
+### Notes & Trade-offs
+
+- Why SWR? Cleaner components + cache/dedupe/revalidate. “Vanilla” useEffect + AbortController also included in earlier iterations (easy swap), but SWR provides nicer UX with less boilerplate.
+- Polling is off by default; enable refreshInterval for continuous freshness. Banking feeds typically refresh on focus or on demand.
+
+### Possible Next Steps
+
+- Persist “last updated” timestamps per resource.
+- Virtualize long tables.
