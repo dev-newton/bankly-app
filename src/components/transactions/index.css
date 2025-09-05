@@ -1,0 +1,70 @@
+.tabs {
+  margin-top: var(--spacer-medium);
+}
+
+.tabs__list {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.tabs__list button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  padding: 8px 24px;
+}
+
+.avatar {
+  user-select: none;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: var(--spacer-small);
+  border: 2px solid var(--primary-300);
+  background-color: var(--background-900);
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+table {
+  background-color: var(--background-800);
+  border-radius: var(--spacer-small);
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  font-size: var(--font-medium);
+}
+
+th {
+  color: var(--primary-300);
+  font-weight: 400;
+  border-bottom: 1px solid #323241;
+  padding: var(--spacer-medium) 10px;
+  line-height: var(--spacer-medium);
+  text-align: left;
+}
+
+td:last-child,
+th:last-child {
+  text-align: right;
+}
+
+.transaction-detail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacer-medium);
+}
+
+.transaction-category {
+  color: var(--primary-300);
+  font-size: 14px;
+  text-transform: capitalize;
+}

@@ -1,0 +1,24 @@
+.accounts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  gap: var(--spacer-large);
+}
+
+.account {
+  background: #14141A;
+  padding: var(--spacer-large);
+  text-align: left;
+  border-radius: 4px;
+}
+
+.total {
+  color: var(--primary-300);
+  line-height: 22px;
+  height: 30px;
+}
+
+.value {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+}

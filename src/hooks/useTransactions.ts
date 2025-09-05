@@ -1,0 +1,42 @@
+import useSWR from "swr";
+import { Transaction } from "../../types";
+
+const TRANSACTIONS_URL = "/api/transactions";
+
+const fetcher = async (url: string) => {
+    const res = await fetch(url, { headers: { Accept: "application/json" } });
+  
+    const text = await res.text();
+    let data: unknown = null;
+    try { data = text ? JSON.parse(text) : null; } catch { data = text; }
+  
+    if (!res.ok) {
+      const err = Object.assign(new Error(`HTTP ${res.status} ${res.statusText}`), {
+        status: res.status,
+        body: data,
+        url,
+      });
+      throw err;
+    }
+  
+    return data as Transaction[];
+  };
+  
+
+export function useTransactions() {
+    const { data, error, isLoading, isValidating,mutate, } =
+        useSWR<Transaction[]>(TRANSACTIONS_URL, fetcher, {
+            revalidateOnFocus: true,
+            revalidateOnReconnect: true,
+            dedupingInterval: 15_000,
+            shouldRetryOnError: false,
+        });
+
+    return {
+        transactions: data ?? [],
+        error,
+        isLoading,
+        isValidating,
+        refetch: () => mutate(),
+    };
+}
